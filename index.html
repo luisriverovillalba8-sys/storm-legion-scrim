@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storm Legion | Scrims & Torneos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">STL</div>
+        <h1>STORM LEGION</h1>
+        <nav>
+            <a href="#info">Info</a>
+            <a href="#inscripcion">Inscripción</a>
+            <a href="#equipos">Equipos</a>
+            <a href="#bracket">Bracket</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h2>BIENVENIDOS A STORM LEGION</h2>
+            <p>Comunidad Oficial de Scrims y Torneos</p>
+            <div class="socials">
+                <a href="https://discord.gg/Sjgu2XAK3" target="_blank" class="btn-discord">Discord</a>
+                <a href="https://chat.whatsapp.com/BSZVhO7fd2N2P2fUwNs6RF?s=cl&p=i&mlu=4&ilr=4" target="_blank" class="btn-ws">WhatsApp</a>
+            </div>
+        </section>
+
+        <section id="info">
+            <h3>INFORMACIÓN DEL SCRIM</h3>
+            <p>Reglas, horarios y modalidades de los próximos torneos comunitarios.</p>
+        </section>
+
+        <section id="inscripcion">
+            <h3>INSCRIPCIÓN DE EQUIPO</h3>
+            <form id="form-inscripcion">
+                <input type="text" placeholder="Nombre del Equipo" required>
+                <input type="text" placeholder="Capitán (Nombre / Steam)" required>
+                <input type="text" placeholder="Jugador 2 (Nombre / Steam)" required>
+                <input type="text" placeholder="Jugador 3 (Nombre / Steam)" required>
+                <input type="text" placeholder="Jugador 4 (Nombre / Steam)" required>
+                <input type="text" placeholder="Suplente 1 (Opcional)">
+                <input type="text" placeholder="Suplente 2 (Opcional)">
+                <button type="submit" class="btn-submit">Inscribir Equipo</button>
+            </form>
+        </section>
+
+        <section id="equipos">
+            <h3>EQUIPOS INSCRITOS</h3>
+            <ul id="lista-equipos">
+                <li>Aún no hay equipos registrados.</li>
+            </ul>
+        </section>
+
+        <section id="bracket">
+            <h3>BRACKET DE ELIMINACIÓN</h3>
+            <p>Los enfrentamientos se publicarán al finalizar las inscripciones.</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
