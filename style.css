@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b0e14;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+header {
+    background: #121824;
+    padding: 20px;
+    border-bottom: 2px solid #00d2ff;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px #00d2ff;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #00d2ff;
+    letter-spacing: 2px;
+}
+
+nav {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00d2ff;
+}
+
+section {
+    background: #121824;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #1e293b;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+}
+
+h2, h3 {
+    color: #00d2ff;
+    margin-bottom: 15px;
+}
+
+.socials {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-discord, .btn-ws, .btn-submit {
+    display: inline-block;
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-discord { background-color: #5865F2; }
+.btn-ws { background-color: #25D366; }
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+input {
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #00d2ff;
+    background-color: #0b0e14;
+    color: #fff;
+}
+
+.btn-submit {
+    background-color: #00d2ff;
+    color: #0b0e14;
+    font-size: 1rem;
+}
+
+ul {
+    list-style: none;
+}
