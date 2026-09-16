@@ -3,39 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STL - Storm Legion Scrims</title>
+  <title>STL - Storm Legion</title>
   <style>
     body { background-color: #080a0f; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; }
     
-    /* VISTAS DE NAVEGACIÓN */
     .view { display: none; }
     .view.active { display: block; }
 
+    /* CABECERA Y BIENVENIDA */
+    .header-stl { text-align: center; border-bottom: 1px solid #1e293b; padding-bottom: 15px; margin-bottom: 15px; }
+    .header-stl h1 { color: #00d2ff; margin: 0; font-size: 1.8rem; }
+    .card-welcome { background: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; text-align: center; margin-bottom: 20px; }
+    .btn-social { display: inline-block; padding: 8px 16px; border-radius: 8px; font-weight: bold; text-decoration: none; color: #fff; margin: 5px; }
+    .btn-discord { background: #5865F2; }
+    .btn-whatsapp { background: #25D366; }
+
     /* TARJETAS DE SCRIMS EN LISTA */
-    .scrim-card {
-      background: #121824;
-      border: 1px solid #1e293b;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .scrim-card { background: #121824; border: 1px solid #1e293b; border-radius: 12px; padding: 15px; margin-bottom: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
     .scrim-card:hover { border-color: #00d2ff; }
     .scrim-info h3 { margin: 0 0 5px 0; font-size: 1rem; color: #fff; }
     .scrim-info p { margin: 0; font-size: 0.85rem; color: #00d2ff; }
     .badge-cupos { background: #222d3d; border: 1px solid #334155; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; }
 
-    /* PANTALLA DETALLE */
-    .banner-scrim {
-      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #080a0f 100%), #121824;
-      border: 1px solid #00d2ff;
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-    }
+    /* DETALLES */
+    .banner-scrim { background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #080a0f 100%), #121824; border: 1px solid #00d2ff; border-radius: 16px; padding: 20px; text-align: center; }
     .badge-estado { background: #28a745; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
     .nav-tabs { display: flex; gap: 10px; margin: 20px 0; background: #121620; padding: 5px; border-radius: 12px; }
     .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; color: #aaa; font-weight: bold; cursor: pointer; border-radius: 8px; }
@@ -48,35 +39,43 @@
 </head>
 <body>
 
-  <!-- VISTA 1: LISTA DE SCRIMS Y HORARIOS -->
-  <div id="vista-lista" class="view active">
-    <h2 style="margin-top:0;">Scrims Disponibles</h2>
-    
-    <div class="scrim-card" onclick="abrirScrim('STL SCRIM TREINO SUR | BDG', '15 sep, 23:00 ARG | 21 COL | 20 MX', '68/45')">
-      <div class="scrim-info">
-        <h3>STL SCRIM TREINO SUR | BDG</h3>
-        <p>15 sep, 23:00 ARG | 21 COL | 20 MX</p>
-      </div>
-      <div class="badge-cupos">68/45</div>
-    </div>
-
-    <div class="scrim-card" onclick="abrirScrim('STL SCRIM NOCTURNA | SQUAD', '16 sep, 01:00 ARG | 23 COL', '12/45')">
-      <div class="scrim-info">
-        <h3>STL SCRIM NOCTURNA | SQUAD</h3>
-        <p>16 sep, 01:00 ARG | 23 COL</p>
-      </div>
-      <div class="badge-cupos">12/45</div>
-    </div>
+  <!-- CABECERA PRINCIPAL -->
+  <div class="header-stl">
+    <h1>STL</h1>
+    <h3 style="margin: 5px 0; color: #00d2ff;">STORM LEGION</h3>
   </div>
 
-  <!-- VISTA 2: DETALLE DEL TORNEO SELECCIONADO -->
+  <!-- VISTA 1: INICIO Y LISTA DE SCRIMS -->
+  <div id="vista-lista" class="view active">
+    
+    <div class="card-welcome">
+      <h3 style="margin-top: 0; color: #00d2ff;">BIENVENIDOS A STORM LEGION</h3>
+      <p style="color: #aaa; font-size: 0.9rem;">Comunidad Oficial de Scrims y Torneos</p>
+      <a href="#" class="btn-social btn-discord">Discord</a>
+      <a href="#" class="btn-social btn-whatsapp">WhatsApp</a>
+    </div>
+
+    <h3 style="margin-bottom: 10px;">SCRIMS DISPONIBLES</h3>
+    
+    <!-- CAMBIA AQUÍ LOS NOMBRES Y HORARIOS REALES DE TUS TORNEOS -->
+    <div class="scrim-card" onclick="abrirScrim('STL SCRIM DIARIA', '20:00 ARG | 18:00 COL', '0/45')">
+      <div class="scrim-info">
+        <h3>STL SCRIM DIARIA</h3>
+        <p>20:00 ARG | 18:00 COL</p>
+      </div>
+      <div class="badge-cupos">0/45</div>
+    </div>
+
+  </div>
+
+  <!-- VISTA 2: DETALLE DEL TORNEO -->
   <div id="vista-detalle" class="view">
     <button class="btn-volver" onclick="mostrarLista()">← Volver a la lista</button>
 
     <div class="banner-scrim">
-      <span class="badge-estado">✓ Inscripto</span>
-      <h2 id="titulo-scrim">STL SCRIM TREINO SUR | BDG</h2>
-      <p id="hora-scrim">15 sep, 23:00 ARG | 21 COL | 20 MX</p>
+      <span class="badge-estado">Inscripciones Abiertas</span>
+      <h2 id="titulo-scrim">STL SCRIM DIARIA</h2>
+      <p id="hora-scrim">20:00 ARG | 18:00 COL</p>
     </div>
 
     <div class="nav-tabs">
@@ -87,14 +86,14 @@
 
     <div id="detalles" class="tab-content active">
       <p><strong>Formato:</strong> Battle Royale</p>
-      <p><strong>Tipo:</strong> Equipo</p>
-      <p><strong>Participantes:</strong> <span id="cupos-scrim">68/45</span></p>
+      <p><strong>Tipo:</strong> Squad</p>
+      <p><strong>Cupos:</strong> <span id="cupos-scrim">0/45</span></p>
       <button class="btn-inscribir">Inscribir equipo</button>
     </div>
 
     <div id="llave" class="tab-content">
-      <h3>Grupo A - STL</h3>
-      <p>Cargando posiciones de Google Sheets...</p>
+      <h3>Tabla de Posiciones</h3>
+      <p>Cargando datos...</p>
     </div>
 
     <div id="matchroom" class="tab-content">
