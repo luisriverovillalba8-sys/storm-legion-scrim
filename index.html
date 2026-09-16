@@ -1,65 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storm Legion | Scrims & Torneos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STL - Storm Legion</title>
+  <style>
+    body { background-color: #080a0f; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; }
+    .banner-scrim { background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #080a0f 100%), #121824; border: 1px solid #00d2ff; border-radius: 16px; padding: 20px; text-align: center; }
+    .badge-estado { background: #28a745; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
+    .nav-tabs { display: flex; gap: 10px; margin: 20px 0; background: #121620; padding: 5px; border-radius: 12px; }
+    .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; color: #aaa; font-weight: bold; cursor: pointer; border-radius: 8px; }
+    .tab-btn.active { background: #fff; color: #000; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .btn-inscribir { background: #0088ff; color: #fff; width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo">STL</div>
-        <h1>STORM LEGION</h1>
-        <nav>
-            <a href="#info">Info</a>
-            <a href="#inscripcion">Inscripción</a>
-            <a href="#equipos">Equipos</a>
-            <a href="#bracket">Bracket</a>
-        </nav>
-    </header>
 
-    <main>
-        <section id="hero">
-            <h2>BIENVENIDOS A STORM LEGION</h2>
-            <p>Comunidad Oficial de Scrims y Torneos</p>
-            <div class="socials">
-                <a href="https://discord.gg/Sjgu2XAK3" target="_blank" class="btn-discord">Discord</a>
-                <a href="https://chat.whatsapp.com/BSZVhO7fd2N2P2fUwNs6RF?s=cl&p=i&mlu=4&ilr=4" target="_blank" class="btn-ws">WhatsApp</a>
-            </div>
-        </section>
+  <div class="banner-scrim">
+    <span class="badge-estado">✓ Inscripto</span>
+    <h2>STL SCRIM TREINO SUR | BDG</h2>
+    <p>15 sep, 23:00 ARG | 21 COL | 20 MX</p>
+  </div>
 
-        <section id="info">
-            <h3>INFORMACIÓN DEL SCRIM</h3>
-            <p>Reglas, horarios y modalidades de los próximos torneos comunitarios.</p>
-        </section>
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="verPestana('detalles', this)">Detalles</button>
+    <button class="tab-btn" onclick="verPestana('llave', this)">Llave</button>
+    <button class="tab-btn" onclick="verPestana('matchroom', this)">Matchroom</button>
+  </div>
 
-        <section id="inscripcion">
-            <h3>INSCRIPCIÓN DE EQUIPO</h3>
-            <form id="form-inscripcion">
-                <input type="text" placeholder="Nombre del Equipo" required>
-                <input type="text" placeholder="Capitán (Nombre / Steam)" required>
-                <input type="text" placeholder="Jugador 2 (Nombre / Steam)" required>
-                <input type="text" placeholder="Jugador 3 (Nombre / Steam)" required>
-                <input type="text" placeholder="Jugador 4 (Nombre / Steam)" required>
-                <input type="text" placeholder="Suplente 1 (Opcional)">
-                <input type="text" placeholder="Suplente 2 (Opcional)">
-                <button type="submit" class="btn-submit">Inscribir Equipo</button>
-            </form>
-        </section>
+  <div id="detalles" class="tab-content active">
+    <p><strong>Formato:</strong> Battle Royale</p>
+    <p><strong>Tipo:</strong> Equipo</p>
+    <p><strong>Participantes:</strong> 68/45</p>
+    <button class="btn-inscribir">Inscribir equipo</button>
+  </div>
 
-        <section id="equipos">
-            <h3>EQUIPOS INSCRITOS</h3>
-            <ul id="lista-equipos">
-                <li>Aún no hay equipos registrados.</li>
-            </ul>
-        </section>
+  <div id="llave" class="tab-content">
+    <h3>Grupo A - STL</h3>
+    <p>Cargando posiciones...</p>
+  </div>
 
-        <section id="bracket">
-            <h3>BRACKET DE ELIMINACIÓN</h3>
-            <p>Los enfrentamientos se publicarán al finalizar las inscripciones.</p>
-        </section>
-    </main>
+  <div id="matchroom" class="tab-content">
+    <h3>Chat de la Sala</h3>
+    <div id="box-chat" style="height: 150px; background: #121620; border-radius: 8px; padding: 10px; margin-bottom: 10px;">
+      <p style="color:#aaa;">[SISTEMA]: BIENVENIDOS AL MATCHROOM.</p>
+    </div>
+    <input type="text" placeholder="Escribe un mensaje..." style="width: 65%; padding: 10px;">
+    <button style="padding: 10px;">Enviar</button>
+  </div>
 
-    <script src="script.js"></script>
+  <script>
+    function verPestana(id, btn) {
+      document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      btn.classList.add('active');
+    }
+  </script>
 </body>
 </html>
