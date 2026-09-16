@@ -4,18 +4,18 @@ document.getElementById("form-inscripcion").addEventListener("submit", function(
   e.preventDefault();
   
   const datos = {
-    equipo: document.getElementById("equipo").value,
-    capitan: document.getElementById("capitan").value,
-    j2: document.getElementById("j2").value,
-    j3: document.getElementById("j3").value,
-    j4: document.getElementById("j4").value
+    equipo: document.getElementById("equipo") ? document.getElementById("equipo").value : "",
+    capitan: document.getElementById("capitan") ? document.getElementById("capitan").value : "",
+    j2: document.getElementById("j2") ? document.getElementById("j2").value : "",
+    j3: document.getElementById("j3") ? document.getElementById("j3").value : "",
+    j4: document.getElementById("j4") ? document.getElementById("j4").value : ""
   };
 
   fetch(URL_APPS_SCRIPT, {
     method: "POST",
     mode: "no-cors",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "text/plain;charset=utf-8"
     },
     body: JSON.stringify(datos)
   })
