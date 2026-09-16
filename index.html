@@ -3,55 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STL - Storm Legion</title>
+  <title>STL - Storm Legion Scrims</title>
   <style>
     body { background-color: #080a0f; color: #fff; font-family: sans-serif; margin: 0; padding: 15px; }
-    .banner-scrim { background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #080a0f 100%), #121824; border: 1px solid #00d2ff; border-radius: 16px; padding: 20px; text-align: center; }
+    
+    /* VISTAS DE NAVEGACIÓN */
+    .view { display: none; }
+    .view.active { display: block; }
+
+    /* TARJETAS DE SCRIMS EN LISTA */
+    .scrim-card {
+      background: #121824;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .scrim-card:hover { border-color: #00d2ff; }
+    .scrim-info h3 { margin: 0 0 5px 0; font-size: 1rem; color: #fff; }
+    .scrim-info p { margin: 0; font-size: 0.85rem; color: #00d2ff; }
+    .badge-cupos { background: #222d3d; border: 1px solid #334155; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; }
+
+    /* PANTALLA DETALLE */
+    .banner-scrim {
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, #080a0f 100%), #121824;
+      border: 1px solid #00d2ff;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
     .badge-estado { background: #28a745; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
     .nav-tabs { display: flex; gap: 10px; margin: 20px 0; background: #121620; padding: 5px; border-radius: 12px; }
     .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; color: #aaa; font-weight: bold; cursor: pointer; border-radius: 8px; }
     .tab-btn.active { background: #fff; color: #000; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
+    .btn-volver { background: transparent; color: #aaa; border: 1px solid #334155; padding: 8px 14px; border-radius: 8px; cursor: pointer; margin-bottom: 15px; }
     .btn-inscribir { background: #0088ff; color: #fff; width: 100%; padding: 15px; border: none; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 15px; }
   </style>
 </head>
 <body>
 
-  <div class="banner-scrim">
-    <span class="badge-estado">✓ Inscripto</span>
-    <h2>STL SCRIM TREINO SUR | BDG</h2>
-    <p>15 sep, 23:00 ARG | 21 COL | 20 MX</p>
-  </div>
-
-  <div class="nav-tabs">
-    <button class="tab-btn active" onclick="verPestana('detalles', this)">Detalles</button>
-    <button class="tab-btn" onclick="verPestana('llave', this)">Llave</button>
-    <button class="tab-btn" onclick="verPestana('matchroom', this)">Matchroom</button>
-  </div>
-
-  <div id="detalles" class="tab-content active">
-    <p><strong>Formato:</strong> Battle Royale</p>
-    <p><strong>Tipo:</strong> Equipo</p>
-    <p><strong>Participantes:</strong> 68/45</p>
-    <button class="btn-inscribir">Inscribir equipo</button>
-  </div>
-
-  <div id="llave" class="tab-content">
-    <h3>Grupo A - STL</h3>
-    <p>Cargando posiciones...</p>
-  </div>
-
-  <div id="matchroom" class="tab-content">
-    <h3>Chat de la Sala</h3>
-    <div id="box-chat" style="height: 150px; background: #121620; border-radius: 8px; padding: 10px; margin-bottom: 10px;">
-      <p style="color:#aaa;">[SISTEMA]: BIENVENIDOS AL MATCHROOM.</p>
+  <!-- VISTA 1: LISTA DE SCRIMS Y HORARIOS -->
+  <div id="vista-lista" class="view active">
+    <h2 style="margin-top:0;">Scrims Disponibles</h2>
+    
+    <div class="scrim-card" onclick="abrirScrim('STL SCRIM TREINO SUR | BDG', '15 sep, 23:00 ARG | 21 COL | 20 MX', '68/45')">
+      <div class="scrim-info">
+        <h3>STL SCRIM TREINO SUR | BDG</h3>
+        <p>15 sep, 23:00 ARG | 21 COL | 20 MX</p>
+      </div>
+      <div class="badge-cupos">68/45</div>
     </div>
-    <input type="text" placeholder="Escribe un mensaje..." style="width: 65%; padding: 10px;">
-    <button style="padding: 10px;">Enviar</button>
+
+    <div class="scrim-card" onclick="abrirScrim('STL SCRIM NOCTURNA | SQUAD', '16 sep, 01:00 ARG | 23 COL', '12/45')">
+      <div class="scrim-info">
+        <h3>STL SCRIM NOCTURNA | SQUAD</h3>
+        <p>16 sep, 01:00 ARG | 23 COL</p>
+      </div>
+      <div class="badge-cupos">12/45</div>
+    </div>
+  </div>
+
+  <!-- VISTA 2: DETALLE DEL TORNEO SELECCIONADO -->
+  <div id="vista-detalle" class="view">
+    <button class="btn-volver" onclick="mostrarLista()">← Volver a la lista</button>
+
+    <div class="banner-scrim">
+      <span class="badge-estado">✓ Inscripto</span>
+      <h2 id="titulo-scrim">STL SCRIM TREINO SUR | BDG</h2>
+      <p id="hora-scrim">15 sep, 23:00 ARG | 21 COL | 20 MX</p>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="verPestana('detalles', this)">Detalles</button>
+      <button class="tab-btn" onclick="verPestana('llave', this)">Llave</button>
+      <button class="tab-btn" onclick="verPestana('matchroom', this)">Matchroom</button>
+    </div>
+
+    <div id="detalles" class="tab-content active">
+      <p><strong>Formato:</strong> Battle Royale</p>
+      <p><strong>Tipo:</strong> Equipo</p>
+      <p><strong>Participantes:</strong> <span id="cupos-scrim">68/45</span></p>
+      <button class="btn-inscribir">Inscribir equipo</button>
+    </div>
+
+    <div id="llave" class="tab-content">
+      <h3>Grupo A - STL</h3>
+      <p>Cargando posiciones de Google Sheets...</p>
+    </div>
+
+    <div id="matchroom" class="tab-content">
+      <h3>Chat de la Sala</h3>
+      <div id="box-chat" style="height: 150px; background: #121620; border-radius: 8px; padding: 10px; margin-bottom: 10px;">
+        <p style="color:#aaa;">[SISTEMA]: BIENVENIDOS AL MATCHROOM.</p>
+      </div>
+      <input type="text" placeholder="Escribe un mensaje..." style="width: 65%; padding: 10px;">
+      <button style="padding: 10px;">Enviar</button>
+    </div>
   </div>
 
   <script>
+    function abrirScrim(titulo, hora, cupos) {
+      document.getElementById('titulo-scrim').innerText = titulo;
+      document.getElementById('hora-scrim').innerText = hora;
+      document.getElementById('cupos-scrim').innerText = cupos;
+      
+      document.getElementById('vista-lista').classList.remove('active');
+      document.getElementById('vista-detalle').classList.add('active');
+    }
+
+    function mostrarLista() {
+      document.getElementById('vista-detalle').classList.remove('active');
+      document.getElementById('vista-lista').classList.add('active');
+    }
+
     function verPestana(id, btn) {
       document.querySelectorAll('.tab-content').forEach(div => div.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
